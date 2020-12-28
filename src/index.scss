@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+$dark: #0a0a0a;
+
+$body-bg: #0a0a0a;
+$body-color: #ffffff;
+
+$enable-rounded: false;
+
+$card-bg: #333333;
+$font-family-sans-serif: 'Ubuntu', sans-serif;
+
+// @import "~bootstrap/scss/bootstrap";
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+
+$hr-border-color: $gray-100;
+
+@import "../node_modules/bootstrap/scss/_buttons.scss";
+@import "../node_modules/bootstrap/scss/_navbar.scss";
+@import "../node_modules/bootstrap/scss/_nav.scss";
+@import "../node_modules/bootstrap/scss/_root.scss";
+@import "~bootstrap/scss/_reboot";
+@import "~bootstrap/scss/_type";
+@import "~bootstrap/scss/_button-group";
+@import "~bootstrap/scss/_input-group";
+@import "~bootstrap/scss/_jumbotron";
+@import "~bootstrap/scss/_list-group";
+@import "~bootstrap/scss/_images";
+@import "~bootstrap/scss/_code";
+@import "~bootstrap/scss/_grid";
+@import "~bootstrap/scss/_close";
+@import "~bootstrap/scss/_badge";
+@import "~bootstrap/scss/_card";
+@import "~bootstrap/scss/_media";
+@import "~bootstrap/scss/_forms";
+@import "~bootstrap/scss/_utilities";
+@import "~bootstrap/scss/_print";
+
+@import "../node_modules/font-awesome/scss/font-awesome.scss";
