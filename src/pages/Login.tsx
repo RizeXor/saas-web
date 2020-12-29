@@ -26,8 +26,9 @@ const LoginPage = () => {
   return (
     <div className="container">
       <div className="row justify-content-center">
-        <div className="col-5 mt-3">
-          <h1>ServerStack</h1>
+        <div className="col-lg-6 mt-3">
+          <h1>Log In</h1>
+          <hr />
           <form onSubmit={formik.handleSubmit}>
             <div className="form-group">
               <label htmlFor="email">Email address</label>
@@ -53,14 +54,16 @@ const LoginPage = () => {
                 onChange={formik.handleChange}
                 value={formik.values.password} />
             </div>
-            <button className="btn btn-primary btn-block" disabled={formik.isSubmitting} type="submit">
-              {formik.isSubmitting && <i className="fa fa-spinner fa-spin" role="status" aria-hidden="true"></i>}
-              <span>
-                {!formik.isSubmitting && <i aria-hidden="true" className="fa fa-sign-in"></i>}
+            <div className="d-flex">
+              <button className="btn btn-primary btn-block" disabled={formik.isSubmitting} type="submit">
+                {formik.isSubmitting ? <i className="fa fa-spinner fa-spin" role="status" aria-hidden="true"></i> : <i aria-hidden="true" className="fa fa-sign-in"></i>}
                 {formik.isSubmitting ? " Loading" : " Log in"}
-              </span>
-            </button>
-            <pre></pre>
+              </button>
+              <button className="btn btn-secondary btn-block ml-2 mt-0" type="button">
+                <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
+                {" Create Account"}
+              </button>
+            </div>
           </form>
         </div>
       </div>

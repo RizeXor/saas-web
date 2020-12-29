@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 
 $dark: #0a0a0a;
+$secondary: #d3d3d3;
 
 $body-bg: #0a0a0a;
 $body-color: #ffffff;
@@ -17,25 +18,40 @@ $font-family-sans-serif: 'Ubuntu', sans-serif;
 
 $hr-border-color: $gray-100;
 
-@import "../node_modules/bootstrap/scss/_buttons.scss";
-@import "../node_modules/bootstrap/scss/_navbar.scss";
-@import "../node_modules/bootstrap/scss/_nav.scss";
-@import "../node_modules/bootstrap/scss/_root.scss";
-@import "~bootstrap/scss/_reboot";
+@import "~bootstrap/scss/_images";
+@import "../node_modules/bootstrap/scss/_buttons";
 @import "~bootstrap/scss/_type";
+@import "~bootstrap/scss/_grid";
+@import "~bootstrap/scss/_forms";
+@import "~bootstrap/scss/_transitions";
+@import "../node_modules/bootstrap/scss/_root";
+@import "~bootstrap/scss/_reboot";
+@import "../node_modules/bootstrap/scss/_nav";
+@import "../node_modules/bootstrap/scss/_navbar";
+@import "../node_modules/bootstrap/scss/_dropdown";
+@import "../node_modules/bootstrap/scss/_variables";
 @import "~bootstrap/scss/_button-group";
 @import "~bootstrap/scss/_input-group";
 @import "~bootstrap/scss/_jumbotron";
 @import "~bootstrap/scss/_list-group";
-@import "~bootstrap/scss/_images";
 @import "~bootstrap/scss/_code";
-@import "~bootstrap/scss/_grid";
 @import "~bootstrap/scss/_close";
 @import "~bootstrap/scss/_badge";
 @import "~bootstrap/scss/_card";
 @import "~bootstrap/scss/_media";
-@import "~bootstrap/scss/_forms";
 @import "~bootstrap/scss/_utilities";
 @import "~bootstrap/scss/_print";
 
-@import "../node_modules/font-awesome/scss/font-awesome.scss";
+@import "../node_modules/font-awesome/scss/font-awesome";
+
+.navbar-modal-ul {
+    list-style-type: none;
+    padding: 0px;
+    .navbar-modal-link {
+        font-size: 1rem;
+        color: white;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
