@@ -41,7 +41,7 @@ const NavbarModalComponent: React.FC<NavbarModalComponentProps> = ({ closeModal,
     >
       <div className="d-flex flex-column justify-content-center align-items-center">
         <h3 className="text-primary">ServerStack</h3>
-        <hr style={{ width: '50%' }} />
+        <hr className="w-50" />
         <ul className="navbar-modal-ul d-flex flex-column align-items-center">
           {routes.map((route, key) => (
             <li key={key} className="my-1">

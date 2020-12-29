@@ -10,7 +10,7 @@ const SubscriptionComponent: React.FC<SubscriptionComponentProps> = ({ sub: { pl
   return (
     <div className="col-lg-4" key={plan.product.id}>
       <div className="card rounded">
-        {plan.product.images[0] && <img src={plan.product.images[0]} alt={plan.product.name + " image"} className="card-img-top img-fluid" />}
+        {plan.product.images[0] && <img src={plan.product.images[0]} alt={plan.product.name + " image"} className="card-img-top" height={210} />}
         <div className="card-body">
           <h5 className="card-title">{plan.product.name + " "}
             <span className={status === "active" ? "badge badge-success" : "badge badge-danger"}>
