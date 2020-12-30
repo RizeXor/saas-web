@@ -1,16 +1,15 @@
 import { Route } from './types/route';
 
-export const routes: Route[] = [
+export const guestRoutes: Route[] = [
+  {
+    to: "/",
+    label: "Login"
+  }
+];
+
+export const loggedInRoutes: Route[] = [
   {
     to: "/",
     label: "Home"
-  },
-  {
-    to: "/login",
-    label: "Login"
-  },
-  {
-    to: "/register",
-    label: "Register"
-  },
+  }
 ];

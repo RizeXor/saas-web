@@ -1,28 +1,27 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useFormik } from 'formik';
-import axios from 'axios';
+import { postLogin } from '../api/login';
+import { UserContext } from '../context/user';
 
 const LoginPage = () => {
+  const { setUser } = useContext(UserContext);
+
   const formik = useFormik({
     initialValues: {
       email: 'testuser@gmail.com',
       password: 'testpassword',
     },
     onSubmit: async (values, { setSubmitting }) => {
-      try {
-        setSubmitting(true);
-        const { data } = await axios.post('/api/v1/auth/login/', {
-          username: values.email,
-          password: values.password,
-        });
-        console.log(data);
-        localStorage.setItem("bid", data.token);
-        setSubmitting(false);
-      } catch (e) {
-        console.log(e);
-      }
+      setSubmitting(true);
+      const loginResponse = await postLogin({
+        email: values.email,
+        password: values.password,
+      });
+      setUser(loginResponse.user);
+      setSubmitting(false);
     },
   });
+
   return (
     <div className="container">
       <div className="row justify-content-center">
@@ -40,6 +39,7 @@ const LoginPage = () => {
                 placeholder="Enter email"
                 name="email"
                 onChange={formik.handleChange}
+                required
                 value={formik.values.email} />
             </div>
             <div className="form-group">
@@ -52,6 +52,7 @@ const LoginPage = () => {
                 placeholder="Enter password"
                 name="password"
                 onChange={formik.handleChange}
+                required
                 value={formik.values.password} />
             </div>
             <div className="d-flex">

@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
-import { routes } from '../../routes';
+import { guestRoutes, loggedInRoutes } from '../../routes';
 import { NavLink } from 'react-router-dom';
 
 Modal.setAppElement('#root');
@@ -43,7 +43,7 @@ const NavbarModalComponent: React.FC<NavbarModalComponentProps> = ({ closeModal,
         <h3 className="text-primary">ServerStack</h3>
         <hr className="w-50" />
         <ul className="navbar-modal-ul d-flex flex-column align-items-center">
-          {routes.map((route, key) => (
+          {loggedInRoutes.map((route, key) => (
             <li key={key} className="my-1">
               <NavLink to={route.to} activeClassName="active" className="navbar-modal-link" onClick={closeModal}>
                 {route.label}

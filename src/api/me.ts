@@ -12,7 +12,11 @@ const fetchMe = async (): Promise<Me> => {
 };
 
 const useMe = () => {
-  return useQuery<Me, AxiosError>('me', fetchMe);
+  return useQuery<Me, AxiosError>('me', fetchMe, {
+    retry: false,
+    refetchInterval: false,
+    refetchOnWindowFocus: false
+  });
 };
 
 export { useMe, fetchMe };

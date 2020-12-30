@@ -4,12 +4,17 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './index.scss';
 import axios from 'axios';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 axios.defaults.baseURL = 'http://localhost:8000';
 
+const client = new QueryClient();
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <QueryClientProvider client={client}>
+      <App />
+    </QueryClientProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

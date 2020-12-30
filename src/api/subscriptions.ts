@@ -1,5 +1,6 @@
 import { Subscription } from '../types/subscription';
-import axios from 'axios';
+import { useQuery } from 'react-query';
+import axios, { AxiosError } from 'axios';
 
 const fetchSubscriptions = async (): Promise<Subscription[]> => {
   const res = await axios.get('/api/v1/subscriptions', {
@@ -10,4 +11,10 @@ const fetchSubscriptions = async (): Promise<Subscription[]> => {
   return res.data;
 };
 
-export { fetchSubscriptions };
+const useSubscriptions = () => {
+  return useQuery<Subscription[], AxiosError>('subscriptions', fetchSubscriptions, {
+    retry: false
+  });
+};
+
+export { fetchSubscriptions, useSubscriptions };
