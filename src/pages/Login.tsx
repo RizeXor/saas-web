@@ -1,15 +1,15 @@
-import React, { useContext } from 'react';
-import { useFormik } from 'formik';
-import { postLogin } from '../api/login';
-import { UserContext } from '../context/user';
+import React, { useContext } from "react";
+import { useFormik } from "formik";
+import { postLogin } from "../api/login";
+import { UserContext } from "../context/user";
 
 const LoginPage = () => {
   const { setUser } = useContext(UserContext);
 
   const formik = useFormik({
     initialValues: {
-      email: 'testuser@gmail.com',
-      password: 'testpassword',
+      email: "testuser@gmail.com",
+      password: "testpassword",
     },
     onSubmit: async (values, { setSubmitting }) => {
       setSubmitting(true);
@@ -40,7 +40,8 @@ const LoginPage = () => {
                 name="email"
                 onChange={formik.handleChange}
                 required
-                value={formik.values.email} />
+                value={formik.values.email}
+              />
             </div>
             <div className="form-group">
               <label htmlFor="password">Password</label>
@@ -53,14 +54,30 @@ const LoginPage = () => {
                 name="password"
                 onChange={formik.handleChange}
                 required
-                value={formik.values.password} />
+                value={formik.values.password}
+              />
             </div>
             <div className="d-flex">
-              <button className="btn btn-primary btn-block" disabled={formik.isSubmitting} type="submit">
-                {formik.isSubmitting ? <i className="fa fa-spinner fa-spin" role="status" aria-hidden="true"></i> : <i aria-hidden="true" className="fa fa-sign-in"></i>}
+              <button
+                className="btn btn-primary btn-block"
+                disabled={formik.isSubmitting}
+                type="submit"
+              >
+                {formik.isSubmitting ? (
+                  <i
+                    className="fa fa-spinner fa-spin"
+                    role="status"
+                    aria-hidden="true"
+                  ></i>
+                ) : (
+                  <i aria-hidden="true" className="fa fa-sign-in"></i>
+                )}
                 {formik.isSubmitting ? " Loading" : " Log in"}
               </button>
-              <button className="btn btn-secondary btn-block ml-2 mt-0" type="button">
+              <button
+                className="btn btn-secondary btn-block ml-2 mt-0"
+                type="button"
+              >
                 <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
                 {" Create Account"}
               </button>

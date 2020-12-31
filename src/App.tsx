@@ -1,17 +1,18 @@
-import React, { useEffect, useState, useContext } from 'react';
-import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
-import LoginPage from './pages/Login';
-import HomePage from './pages/Home';
-import NavbarComponent from './components/ui/Navbar';
-import { UserContext } from './context/user';
-import { Me } from './types/me';
-import { useMe } from './api/me';
+import React, { useEffect, useState, useContext } from "react";
+import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
+import LoginPage from "./pages/Login";
+import HomePage from "./pages/Home";
+import NavbarComponent from "./components/ui/Navbar";
+import { UserContext } from "./context/user";
+import { Me } from "./types/me";
+import { useMe } from "./api/me";
+import ShopPage from "./pages/Shop";
 
 const App = () => {
   const [user, setUser] = useState<Me>({
     email: "",
     first_name: "",
-    last_name: ""
+    last_name: "",
   });
 
   const isLoggedIn = () => {
@@ -42,7 +43,9 @@ const App = () => {
     return (
       <div className="d-flex flex-column align-items-center w-100 container mt-3">
         <h1>ServerStack</h1>
-        <span className="text-danger">{me.error.response == null ? "Server offline" : me.error.message}</span>
+        <span className="text-danger">
+          {me.error.response == null ? "Server offline" : me.error.message}
+        </span>
       </div>
     );
   }
@@ -51,12 +54,17 @@ const App = () => {
     <Router>
       <UserContext.Provider value={{ user, setUser, isLoggedIn }}>
         <NavbarComponent />
-        {isLoggedIn() ? <HomePage /> : <LoginPage />}
-        <Switch>
-        </Switch>
+        {isLoggedIn() ? (
+          <Switch>
+            <Route component={HomePage} path="/" exact />
+            <Route component={ShopPage} path="/shop" exact />
+          </Switch>
+        ) : (
+          <LoginPage />
+        )}
       </UserContext.Provider>
     </Router>
   );
-}
+};
 
 export default App;

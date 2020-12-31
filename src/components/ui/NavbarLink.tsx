@@ -1,14 +1,24 @@
-import { Link, useRouteMatch } from 'react-router-dom';
+import { Link, useRouteMatch } from "react-router-dom";
 
-function NavbarLink({ label, to, activeOnlyWhenExact }: { label: string, to: string, activeOnlyWhenExact: true }) {
+function NavbarLink({
+  label,
+  to,
+  activeOnlyWhenExact,
+}: {
+  label: string;
+  to: string;
+  activeOnlyWhenExact: true;
+}) {
   let match = useRouteMatch({
     path: to,
-    exact: activeOnlyWhenExact
+    exact: activeOnlyWhenExact,
   });
 
   return (
     <li className={match ? "nav-item active" : "nav-item"}>
-      <Link to={to} className="nav-link">{label}</Link>
+      <Link to={to} className="nav-link">
+        {label}
+      </Link>
     </li>
   );
 }

@@ -1,9 +1,9 @@
-import axios from 'axios';
-import formik from 'formik';
+import axios from "axios";
+import formik from "formik";
 
 const postLogin = async (values: any) => {
   try {
-    const { data } = await axios.post('/api/v1/auth/login/', {
+    const { data } = await axios.post("/api/v1/auth/login/", {
       username: values.email,
       password: values.password,
     });

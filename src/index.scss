@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
 
 $dark: #0a0a0a;
 $secondary: #d3d3d3;
@@ -9,7 +9,7 @@ $body-color: #ffffff;
 $enable-rounded: false;
 
 $card-bg: #333333;
-$font-family-sans-serif: 'Ubuntu', sans-serif;
+$font-family-sans-serif: "Ubuntu", sans-serif;
 
 // @import "~bootstrap/scss/bootstrap";
 @import "../node_modules/bootstrap/scss/functions";
@@ -45,13 +45,13 @@ $hr-border-color: $gray-100;
 @import "../node_modules/font-awesome/scss/font-awesome";
 
 .navbar-modal-ul {
-    list-style-type: none;
-    padding: 0px;
-    .navbar-modal-link {
-        font-size: 1rem;
-        color: white;
-        &:hover {
-            text-decoration: underline;
-        }
+  list-style-type: none;
+  padding: 0px;
+  .navbar-modal-link {
+    font-size: 1rem;
+    color: white;
+    &:hover {
+      text-decoration: underline;
     }
+  }
 }
