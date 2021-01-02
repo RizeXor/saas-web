@@ -1,6 +1,5 @@
 import React from "react";
-import { useBuy } from "../api/buy";
-import { useMutation } from "react-query";
+import { useBuyMutation } from "../api/buy";
 import { Price } from "../types/product";
 
 type PriceComponentProps = {
@@ -9,7 +8,7 @@ type PriceComponentProps = {
 };
 
 const PriceComponent: React.FC<PriceComponentProps> = ({ price, index }) => {
-  const buyMutation = useBuy();
+  const buyMutation = useBuyMutation();
 
   const handleBuy = (price_id: string) => {
     buyMutation.mutate(price_id);

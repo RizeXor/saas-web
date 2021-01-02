@@ -1,5 +1,5 @@
 import axios from "axios";
-import formik from "formik";
+import { useMutation } from "react-query";
 
 const postLogin = async (values: any) => {
   try {
@@ -15,4 +15,24 @@ const postLogin = async (values: any) => {
   }
 };
 
-export { postLogin };
+type LoginResponse = {};
+
+const useLoginMutation = () => {
+  return useMutation(
+    (values: { email: string; password: string }) =>
+      axios.post<LoginResponse>("/api/v1/auth/login/", {
+        username: values.email,
+        password: values.password,
+      }),
+    {
+      onSuccess: () => {
+        console.log("Hello world");
+      },
+      onError: (err: any) => {
+        console.log(Object.keys(err));
+      },
+    }
+  );
+};
+
+export { postLogin, useLoginMutation };

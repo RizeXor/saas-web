@@ -1,24 +1,23 @@
 import React, { useContext } from "react";
 import { useFormik } from "formik";
-import { postLogin } from "../api/login";
+import { useLoginMutation } from "../api/login";
 import { UserContext } from "../context/user";
 
 const LoginPage = () => {
   const { setUser } = useContext(UserContext);
+  const loginMutation = useLoginMutation();
 
   const formik = useFormik({
     initialValues: {
       email: "testuser@gmail.com",
       password: "testpassword",
     },
-    onSubmit: async (values, { setSubmitting }) => {
-      setSubmitting(true);
-      const loginResponse = await postLogin({
-        email: values.email,
-        password: values.password,
+    onSubmit: (values) => {
+      const { email, password } = values;
+      loginMutation.mutate({
+        email,
+        password,
       });
-      setUser(loginResponse.user);
-      setSubmitting(false);
     },
   });
 
@@ -60,10 +59,10 @@ const LoginPage = () => {
             <div className="d-flex">
               <button
                 className="btn btn-primary btn-block"
-                disabled={formik.isSubmitting}
+                disabled={loginMutation.isLoading}
                 type="submit"
               >
-                {formik.isSubmitting ? (
+                {loginMutation.isLoading ? (
                   <i
                     className="fa fa-spinner fa-spin"
                     role="status"
@@ -72,7 +71,7 @@ const LoginPage = () => {
                 ) : (
                   <i aria-hidden="true" className="fa fa-sign-in"></i>
                 )}
-                {formik.isSubmitting ? " Loading" : " Log in"}
+                {loginMutation.isLoading ? " Loading" : " Log in"}
               </button>
               <button
                 className="btn btn-secondary btn-block ml-2 mt-0"
@@ -82,6 +81,10 @@ const LoginPage = () => {
                 {" Create Account"}
               </button>
             </div>
+            <pre className="text-danger">
+              {loginMutation.isError &&
+                JSON.stringify(loginMutation.error?.response.data, null, 4)}
+            </pre>
           </form>
         </div>
       </div>
