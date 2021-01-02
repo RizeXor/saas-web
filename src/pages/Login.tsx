@@ -1,23 +1,37 @@
-import React, { useContext } from "react";
+import axios from "axios";
 import { useFormik } from "formik";
-import { useLoginMutation } from "../api/login";
+import React, { useContext, useEffect } from "react";
 import { UserContext } from "../context/user";
+import { useLoginMutation } from "../api/login";
 
 const LoginPage = () => {
-  const { setUser } = useContext(UserContext);
   const loginMutation = useLoginMutation();
+  const { setUser } = useContext(UserContext);
 
   const formik = useFormik({
     initialValues: {
-      email: "testuser@gmail.com",
+      email: "testadmin@gmail.com",
       password: "testpassword",
     },
     onSubmit: (values) => {
       const { email, password } = values;
-      loginMutation.mutate({
-        email,
-        password,
-      });
+      loginMutation.mutate(
+        {
+          email,
+          password,
+        },
+        {
+          onSuccess: (data) => {
+            setUser(
+              data.data.user || {
+                email: "",
+                first_name: "",
+                last_name: "",
+              }
+            );
+          },
+        }
+      );
     },
   });
 
@@ -81,10 +95,10 @@ const LoginPage = () => {
                 {" Create Account"}
               </button>
             </div>
-            <pre className="text-danger">
-              {loginMutation.isError &&
-                JSON.stringify(loginMutation.error?.response.data, null, 4)}
-            </pre>
+            {/* <pre className="text-danger">  */}
+            {/*   {loginMutation.isError && */}
+            {/*     JSON.stringify(loginMutation.error?.response.data, null, 4)} */}
+            {/* </pre> */}
           </form>
         </div>
       </div>

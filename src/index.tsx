@@ -2,18 +2,20 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import "./index.scss";
 import axios from "axios";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { ToastContainer } from "react-toastify";
+import "./index.scss";
+import "react-toastify/dist/ReactToastify.min.css";
 
 axios.defaults.baseURL = "http://localhost:8000";
-
 const client = new QueryClient();
 
 ReactDOM.render(
   <React.StrictMode>
     <QueryClientProvider client={client}>
       <App />
+      <ToastContainer />
     </QueryClientProvider>
   </React.StrictMode>,
   document.getElementById("root")

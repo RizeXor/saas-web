@@ -1,21 +1,25 @@
 import axios from "axios";
 import { useMutation } from "react-query";
+import { toast } from "react-toastify";
+import { Me } from "../types/me";
 
-const postLogin = async (values: any) => {
-  try {
-    const { data } = await axios.post("/api/v1/auth/login/", {
-      username: values.email,
-      password: values.password,
-    });
-    console.log(data);
-    localStorage.setItem("bid", data.token);
-    return data;
-  } catch (e) {
-    console.log(e);
-  }
+// const postLogin = async (values: any) => {
+//   try {
+//     const { data } = await axios.post("/api/v1/auth/login/", {
+//       username: values.email,
+//       password: values.password,
+//     });
+//     localStorage.setItem("bid", data.token);
+//     return data;
+//   } catch (e) {
+//     console.log(e);
+//   }
+// };
+
+type LoginResponse = {
+  token: string;
+  user: Me;
 };
-
-type LoginResponse = {};
 
 const useLoginMutation = () => {
   return useMutation(
@@ -25,14 +29,17 @@ const useLoginMutation = () => {
         password: values.password,
       }),
     {
-      onSuccess: () => {
-        console.log("Hello world");
+      onSuccess: (data) => {
+        localStorage.setItem("bid", data.data.token);
       },
       onError: (err: any) => {
-        console.log(Object.keys(err));
+        const errorMsg = err.response.data.non_field_errors[0];
+        toast.error(errorMsg, {
+          autoClose: 5000,
+        });
       },
     }
   );
 };
 
-export { postLogin, useLoginMutation };
+export { useLoginMutation };

@@ -30,7 +30,7 @@ const ProductComponent: React.FC<ProductComponentProps> = ({
           )}
           <div className="d-flex flex-column">
             {prices.map((price, index) => (
-              <PriceComponent price={price} index={index} />
+              <PriceComponent price={price} key={price.id} index={index} />
             ))}
           </div>
         </div>
