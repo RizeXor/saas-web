@@ -33,3 +33,4 @@ npm run start
 10. [Font awesome](https://fontawesome.com/): Icons
 11. [dayjs](https://github.com/iamkun/dayjs): Parsing date and time
 12. [Formik](https://formik.org/): Forms and validation
+13. [react-router-dom](https://reactrouter.com/web/guides/quick-start): Client side routing
